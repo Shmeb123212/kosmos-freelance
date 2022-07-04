@@ -57,17 +57,19 @@ function StarTrek() {
           <NavBar />
         </Col>
         <Col xl={9}>
-          <div className="startrek__title"></div>
+          <div className="root-page-title color-milkey">Млечный путь</div>
+        
           <Spinner isLoading={isLoading}>
+            <Summary />
             <Statistics />
             <div className="text-center">
-              <Button className="m-2" tag={Link} to={r.starTrekPlanets} color="primary">
+              <Link className='link-blue' to={r.starTrekPlanets} >
                 Мои места
-              </Button>
+              </Link>
               {/* TODO: delete all functions */}
               <Button
-                color="primary"
-                className="m-2"
+              
+                className='link-blue'
                 loading={isBuyLoading}
                 disabled={Boolean(timer) || isBuyLoading}
                 onClick={handleButtonClick}
@@ -90,12 +92,12 @@ function StarTrek() {
               </Button>
             </div>
             <div className="text-center">
-              <Button className="m-2" to={r.starTrekStatistic} color="primary" tag={Link}>
+              <Link className='link-blue' to={r.starTrekStatistic}>
                 Статистика
-              </Button>
+              </Link>
             </div>
 
-            <Summary />
+            
           </Spinner>
         </Col>
       </Row>

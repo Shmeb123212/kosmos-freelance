@@ -54,11 +54,13 @@
   .counter {
     position: absolute;
     top: 4px;
-    right: -2px;
+    right: -10px;
     z-index: 2;
-    width: 24px;
-    height: 24px;
-    background-color: #0b2e13;
+    width: 32px;
+    height: 32px;
+    background-color: #a0ebe6;
+    padding: 3px;
+    color: #fff;
     border-radius: 50%;
     font-size: 0.875rem;
     text-align: center;
@@ -125,19 +127,7 @@
     }
 
     .shadow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 1px;
-      height: 1px;
-      z-index: -1;
-      background: radial-gradient(
-        50% 50% at 50% 50%,
-        rgba(255, 89, 247, 0.02) 0%,
-        rgba(255, 89, 247, 0) 100%
-      );
-      border-radius: 50%;
+     box-shadow: none !important;
     }
   }
 
@@ -165,16 +155,28 @@
     top: 100%;
     left: 50%;
     transform: translate(-50%, -10px);
-    z-index: 2;
+    z-index: 3;
     width: max-content;
     max-width: 150px;
     padding: 4px 10px;
-    background-color: #0b2e13;
+    background-color: #ffbf69;
+    color: #fff;
     transition: opacity 0.15s ease-in-out;
+    // border: 1px solid #8083E6;
     word-break: break-all;
     border-radius: 10px;
     line-height: 0.8rem;
+    text-align: center;
     font-size: 0.8rem;
+    min-width: 82px;
+
+    &:after {
+      content: '▾';
+      display: inline-block;
+      vertical-align: middle;
+      margin: -2px 0 0 5px;
+      font-size: 10px;
+    }
 
     @include media-breakpoint-up(xl) {
       top: 30px;
@@ -185,5 +187,9 @@
       line-height: 0.8rem;
       padding: 10px 17px;
     }
+  }
+
+  .userNameDropdown {
+    font-size: 11px;
   }
 }

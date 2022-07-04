@@ -101,7 +101,7 @@ const TableQuemini = ({ location: { state = {} } }) => {
             </nav>
           )}
           <div className={styles.actions}>
-            <div>
+            <div className={styles.btns}>=
               <button
                 className={line === 0 ? styles.active : undefined}
                 onClick={() => handleChangeLine(0)}

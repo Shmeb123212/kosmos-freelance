@@ -11,6 +11,7 @@ import NavBar from '../../../components/layout/Navbar'
 
 function Leader() {
   const userInfo = useSelector((state) => state.app.user)
+  const user = 'Наставник'
 
   return (
     <Container className="root-page">
@@ -19,12 +20,12 @@ function Leader() {
           <NavBar />
         </Col>
         <Col>
-          <h1 className="root-page-title">Наставник</h1>
+          <h1 className="root-page-title-m">Наставник</h1>
           {userInfo && (
             <>
-              <div className="leader">
-                <div className="leader__figure">
-                  <div className="leader__image">
+              <div className={'leader ava-leader'}>
+              <div className="leader__figure">
+                  <div className="leader__image-mentor">
                     <img
                       src={
                         userInfo.inviterAvatar
@@ -97,42 +98,51 @@ function Leader() {
                   </div>
                 </div>
               </div>
-              <div className="card">
+              <div className="card__bot">
                 <div className="card__header">
                   <div className="card__header-left">
-                    <h3 className="card__title">Kosmo_Bot</h3>
+                    <h3 className="card__title card__title-info">Kosmo_Bot</h3>
                   </div>
                 </div>
                 <div className="card__body">
-                  Хочешь быть в курсе всех новостей, оперативно отслеживать все регистрации и
-                  финансовые операции в своём кабинете? Специально для тебя у нас есть KosmoBot,{' '}
-                  <br />
-                  <br />
-                  <strong style={{ color: '#00C3E1' }}>
-                    ОБЯЗАТЕЛЬНО вступай в него нажав на кнопку ниже!
-                  </strong>
-                  <br />
-                  <br />
-                  <Button tag="a" color="primary" href={``}>
-                    Вступить
-                  </Button>
+                  <span className="card__title-body">
+                    Хочешь быть в курсе всех новостей, оперативно отслеживать все регистрации и
+                    финансовые операции в своём кабинете? Специально для тебя у нас есть KosmoBot,{' '}
+                  </span>
+
+                  <div className='card__btn-strong'>
+                    <strong className='card__strong'>
+                      ОБЯЗАТЕЛЬНО вступай в него нажав на кнопку ниже!
+                    </strong>
+                  
+                    <Button tag="a" color="primary" href={``} className='card__btn'>
+                      Вступить
+                      <span></span><span></span><span></span><span></span>
+                    </Button>
+                  </div>
+
                 </div>
               </div>
-              <div className="card">
+              <div className="card__bot">
                 <div className="card__header">
                   <div className="card__header-left">
-                    <h3 className="card__title">Обо мне</h3>
+                    <h3 className="card__title card__title-info">Обо мне</h3>
                   </div>
                 </div>
-                <div className="card__body">{userInfo.description || '-'}</div>
+                <div className="card__body">
+                  <p className='card__title-body'> {userInfo.description || '-'}</p>
+                </div>
               </div>
-              <video
-                controls
-                poster={posterVideo}
-                controlsList="nodownload nofullscreen noremoteplayback"
-              >
-                <source src={video} type="video/mp4" />
-              </video>
+              <div className='video__block'>
+                <video
+                  controls
+                  poster={posterVideo}
+                  controlsList="nodownload nofullscreen noremoteplayback"
+                  className='video__nas'
+                >
+                  <source src={video} type="video/mp4" />
+                </video>
+              </div>
               {userInfo && userInfo.showInviter && (
                 <h3 className="text-center mb-5 mt-5">
                   Если хотите пополнить кабинет без комиссии, напишите мне в Telegram, ссылка

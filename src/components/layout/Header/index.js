@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Container, Row, Col } from 'react-bootstrap'
+// import { Container, Row, Col } from 'react-bootstrap'
 import { HashLink } from 'react-router-hash-link'
 import { Link } from 'react-router-dom'
-import styles from './Header.module.scss'
+import styles from './Header.module.css'
 import logo from '../../../scss/media/kosmos.png'
 import hamburger from '../../../scss/media/hamburger.d7c1214b.svg'
 import signIn from '../../../scss/media/sig.svg'
@@ -178,6 +178,7 @@ export default function Header({ variant }) {
   const dispatch = useDispatch()
   const [isNavMenuVisible, setIsNavMenuVisible] = useState(false)
   const [isHeaderVisible, setIsHeaderVisible] = useState(false)
+  const [burger, setBurger] = useState('')
 
   const logout = () => {
     dispatch(actions.signOutSuccess())
@@ -189,11 +190,15 @@ export default function Header({ variant }) {
 
   const toggleNavMenu = () => {
     if (isNavMenuVisible) {
-      document.body.style.overflow = 'initial'
+      // document.documentElement.classList.remove('body-overflow')
+      // document.body.classList.remove('html-overflow')
       setIsNavMenuVisible(false)
+      setBurger(false)
     } else {
-      document.body.style.overflow = 'hidden'
+      // document.documentElement.classList.add('body-overflow')
+      // document.body.classList.add('html-overflow')
       setIsNavMenuVisible(true)
+      setBurger(true)
     }
   }
 
@@ -206,11 +211,11 @@ export default function Header({ variant }) {
       className={`${styles.Header} ${styles[variant]} ${isHeaderVisible ? styles.visible : ''}`}
     >
       <div className={styles.wrapper}>
-        <Container>
+        <div className='container'>
           {variant === 'public' && (
-            <Row>
-              <Col xs={6} xl={9} className="d-flex align-items-center justify-content-between">
-                <div className="d-flex align-items-center">
+            <div className={styles.row}>
+              <div className={styles.col}>
+                <div className={styles.card}>
                   <div className={styles.mainLogo}>
                     <svg
                       className={styles.star}
@@ -251,8 +256,8 @@ export default function Header({ variant }) {
                     </HashLink>
                   ))}
                 </nav>
-              </Col>
-              <Col xs={6} xl={3} className="d-flex align-items-center justify-content-end">
+              </div>
+              <div>
                 <Link to={routes.signIn} className={styles.signInLink}>
                   <img src={signIn} alt="Войти" />
                   Войти
@@ -260,33 +265,46 @@ export default function Header({ variant }) {
                 <button className={styles.hamburgerButton}>
                   <img src={hamburger} alt="Иконка гамбургер меню" />
                 </button>
-              </Col>
-            </Row>
+              </div>
+            </div>
           )}
+
+
+
+
+
           {variant === 'private' && (
-            <Row>
-              <Col className="d-flex align-items-center">
-                <button className={styles.hamburgerButton} onClick={toggleNavMenu}>
-                  <img src={hamburger} alt="Иконка гамбургер меню" />
-                </button>
-              </Col>
-              <Col>
-                <Link to={routes.root}>
-                  <img className={styles.mainLogo} src={logo} alt="Логотип Stars" />
+            <div className={styles.headerMCont}>
+              <div className={styles.headerLogoBlock}>
+                <Link to={routes.root} className={styles.mainLogoLink}>
+                    <span className={styles.mainLogo}></span>
                 </Link>
-              </Col>
-              <Col className="d-flex align-items-center justify-content-end">
-                <button className={styles.signoutButton} onClick={logout}>
-                  <img src={signOut} alt="Выйти" />
-                </button>
-              </Col>
-            </Row>
+              </div>
+              <div className={styles.contentCard}>
+                <div className={styles.burgerBlock}>
+                  <button className={burger ? [styles.hamburgerButton, styles.burgerActive].join` ` : styles.hamburgerButton} onClick={toggleNavMenu}>
+                  <span className={styles.lineBurgerTop}></span>
+                  <span className={styles.lineBurger}></span>
+                  <span className={styles.lineBurgerBottom}></span>
+                  </button>
+                </div>
+                <div className={styles.logoutBlock}>
+                  <button className={styles.signoutButton} onClick={logout}>
+                    <img src={signOut} alt="Выйти" className={styles.imgLogout}/>
+                  </button>
+                </div>
+                </div>
+            </div>
           )}
-        </Container>
+
+
+
+          
+        </div>
         <nav className={`${styles.mobileNavBar} ${isNavMenuVisible ? styles.opened : ''}`}>
-          <Container>
-            <Row>
-              <Col xs={12}>
+          <div>
+            <div className={styles.linkCard}>
+              <div className={styles.linkList}>
                 {privateNavLinks.map(({ label, route }) => (
                   <Link
                     key={route}
@@ -297,9 +315,9 @@ export default function Header({ variant }) {
                     {label}
                   </Link>
                 ))}
-              </Col>
-            </Row>
-          </Container>
+              </div>
+            </div>
+          </div>
         </nav>
       </div>
     </header>

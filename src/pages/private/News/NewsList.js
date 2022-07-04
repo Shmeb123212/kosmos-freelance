@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate'
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
 import isEmpty from 'lodash-es/isEmpty'
-import styles from './News.module.scss'
+import styles from './News.module.css'
 
 import * as actions from '../../../actions/news.actions'
 import arrowRight from '../../../scss/media/angle-right.2219c635.svg'
@@ -26,20 +26,19 @@ function NewsList() {
 
   return (
     <>
-      <h1 className="root-page-title">Новости</h1>
       {!isEmpty(list) ? (
         <Row>
           {list.map(({ id, image, ruTitle, ruDescription }) => (
             <Col lg={6} key={id}>
               <figure className="news__figure">
-                <Link className="news__figure-image" to={`/news/${id}`}>
+              <h3 className="news__figure-title">{ruTitle}</h3>
+                <Link className="news__figure-image news-img-block" to={`/news/${id}`}>
                   <img src={`${process.env.REACT_APP_BASE_URL}${image}`} alt={ruTitle} />
                 </Link>
-                <figcaption className="news__figure-body">
-                  <h3 className="news__figure-title">{ruTitle}</h3>
+                <figcaption className="news__figure-body news-descr-block">
                   <div className="news__figure-description">{ruDescription}</div>
                   <Link className="news__figure-link" to={`/news/${id}`}>
-                    Подробнее
+                    -    Подробнее
                   </Link>
                 </figcaption>
               </figure>

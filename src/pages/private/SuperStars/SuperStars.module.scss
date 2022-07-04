@@ -2,19 +2,6 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-.SuperStars {
-  position: relative;
-  padding: 40px 0 0;
-
-  @include media-breakpoint-up(xl) {
-    padding-bottom: 50px;
-
-    .userInfo {
-      margin-bottom: 50px;
-    }
-  }
-}
-
 .Table {
   position: relative;
 
@@ -34,17 +21,42 @@
     display: flex;
     position: relative;
     align-items: center;
-    justify-content: flex-end;
-    margin: 20px 0 20px;
+    justify-content: space-between;
+    margin: 40px 0 20px;
 
     .close {
-      display: block;
+      display: flex;
+      align-items: center;
+      position: relative;
       cursor: pointer;
-      width: 27px;
+      width: 40px;
+      height: 40px;
+      right: 0;
 
-      img {
-        display: block;
-        max-width: 100%;
+      .closeIT, .closeIB {
+        width: 100%;
+        height: 7px;
+        display: inline-block;
+        position: absolute;
+
+        border-radius: 15px;
+        background-color: #ff9f1c;
+        transition: all .4s ease-in-out;
+      }
+
+      .closeIT {
+        transform: rotate(-45deg);
+      }
+
+      .closeIB {
+        transform: rotate(45deg);
+      }
+
+      &:hover .closeIT {
+        transform: rotate(45deg);
+      }
+      &:hover .closeIB {
+        transform: rotate(-45deg);
       }
 
       @include media-breakpoint-up(xl) {
@@ -52,11 +64,49 @@
       }
     }
 
-    @include media-breakpoint-up(xl) {
-      margin: 27px 0 60px;
+    .title {
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 800;
+      font-size: 26px;
+      line-height: 1;
+      color: #ff9f1c;
+      margin: 0;
 
-      .close {
-        width: 47px;
+      @include media-breakpoint-up(xl) {
+        justify-content: flex-start;
+        text-align: left;
+        font-size: 62px;
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 30px;
+
+    a {
+      display: inline-flex;
+      padding: 13px 10px;
+      line-height: 28px;
+      font-weight: bold;
+      font-size: 24px;
+      color: #ffbe6982;
+
+      + a {
+        margin-left: 15px;
+      }
+
+      &.active {
+        color: #ffbf69;
+      }
+    }
+
+    @include media-breakpoint-up(sm) {
+      a {
+        line-height: 34px;
+        font-size: 28px;
       }
     }
   }
@@ -70,18 +120,6 @@
   }
 
   .sidebar {
-    .title {
-      color: #0b2e13;
-      margin: 0 0 26px;
-      font-weight: 800;
-      font-size: 26px;
-      line-height: 1;
-
-      @include media-breakpoint-up(xl) {
-        font-size: 62px;
-      }
-    }
-
     .matrixSelect {
       width: 100%;
       position: relative;
@@ -150,56 +188,33 @@
   .navigation {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 40px 0;
+    justify-content: space-between;
+    background-color: #cbf3f0;
+    border-radius: 10px;
+    color: white;
+    padding: 0 10px;
+    margin: 20px auto 0;
+    max-width: 258px;
+    height: 87px;
 
-    > div {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #0b2e13;
-      text-decoration: none;
-      border-radius: 50%;
-      line-height: 24px;
-      font-weight: 500;
-      font-size: 20px;
-      cursor: pointer;
-      margin: 0 2px;
-      color: #fff;
+    button {
+      transition: transform 0.3s ease-in;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      padding: 0;
+      margin: 0;
 
-      &.active {
-        background-color: #0b2e13;
-        pointer-events: none;
+      &:first-child:hover {
+        transform: translateX(-10px);
       }
 
-      &.sideArrow {
-        background-color: #0b2e13;
+      &:last-child:hover {
+        transform: translateX(10px);
       }
 
-      &.arrow {
-        background-color: transparent;
-      }
-
-      &.disabled {
-        pointer-events: none;
-        opacity: 0.5;
-      }
-
-      .arrowLeft {
-        margin-left: -2px;
-      }
-
-      .arrowRight {
-        margin-right: -2px;
-      }
-    }
-
-    @include media-breakpoint-up(xl) {
-      > div {
-        margin-right: 6px;
-        margin-left: 6px;
+      img {
+        max-width: 80px;
       }
     }
   }
@@ -214,15 +229,39 @@
     }
 
 
-    .secondRow {
+    .secondRow,
+    .thirdRow {
       display: flex;
       justify-content: space-between;
-      max-width: 327px;
+    }
+
+    .secondRow {
+      max-width: 242px;
       margin: 0 auto;
 
       @include media-breakpoint-up(xl) {
         width: 100%;
-        max-width: 688px;
+        max-width: 780px;
+      }
+    }
+
+    .thirdRow {
+      @include media-breakpoint-up(xl) {
+        width: 100%;
+        max-width: 706px;
+      }
+
+
+      .cellsWrapper {
+        display: flex;
+
+        & > *:first-child {
+          margin-right: 27px;
+
+          @include media-breakpoint-up(xl) {
+            margin-right: 116px;
+          }
+        }
       }
     }
   }

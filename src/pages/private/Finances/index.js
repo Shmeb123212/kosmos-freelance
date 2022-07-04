@@ -39,19 +39,19 @@ function Finances() {
             <NavBar />
           </Col>
           <Col>
-            <h1 className="root-page-title">Финансы</h1>
+            <h1 className="root-page-title finances-title">Финансы</h1>
             {userInfo && (
               <>
                 <Row>
                   <Col lg={6}>
-                    <div className="card">
+                    <div className="card list-card-fin">
                       <div className="card__header">
                         <div className="card__header-left">
-                          <h3 className="card__title">Основной баланс</h3>
+                          <h3 className="card__title card__title-fin">Общий баланс</h3>
                         </div>
                       </div>
                       <div className="card__body">
-                        <h3>
+                        <h3 className='card-fin-bal'>
                           {formatter
                             .format(
                               (userInfo.balance > -1 && userInfo.balance) || 0,
@@ -59,25 +59,24 @@ function Finances() {
                             .replace('₽', 'ST')}
                         </h3>
                         <br />
-                        <Button
+                        <button
                           onClick={handleVisibleTransferMoneyModal}
-                          color="primary"
-                          block
+                          className='fin-btn'
                         >
                           Перевод партнеру
-                        </Button>
+                        </button>
                       </div>
                     </div>
                   </Col>
                   <Col lg={6}>
-                    <div className="card">
+                    <div className="card list-card-fin">
                       <div className="card__header">
                         <div className="card__header-left">
-                          <h3 className="card__title">Транзитный баланс</h3>
+                          <h3 className="card__title card__title-fin">Транзитный баланс</h3>
                         </div>
                       </div>
                       <div className="card__body">
-                        <h3>
+                        <h3 className='card-fin-bal'>
                           {formatter
                             .format(
                               (userInfo.transferBalance > -1 &&
@@ -88,21 +87,20 @@ function Finances() {
                         </h3>
 
                         <br />
-                        <Button
+                        <button
                           onClick={openOperationsHistoryModal}
-                          color="primary"
-                          block
+                          className='fin-btn'
                         >
                           История операций
-                        </Button>
+                        </button>
                       </div>
                     </div>
                   </Col>
                 </Row>
-                <h2>Приобрести</h2>
+                <h2 className='pay-fin-title'>Приобрести/вывести</h2>
                 <ReplenishmentOfMoney />
-                <h2>Вывод</h2>
-                <WithdrawalOfMoney />
+                {/* <h2>Вывод</h2>
+                <WithdrawalOfMoney /> */}
               </>
             )}
           </Col>

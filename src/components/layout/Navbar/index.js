@@ -1,26 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './NavBar.module.scss'
+import styles from './NavBar.module.css'
 import routes from '../../../constants/routes.constants'
-import user from '../../../scss/media/user.5e48b571.svg'
-import news from '../../../scss/media/news.58147b12.svg'
-import question from '../../../scss/media/question.d8eb4f5a.svg'
-import money from '../../../scss/media/money-coin.1ab3ac3b.svg'
-import team from '../../../scss/media/team.9cf5738b.svg'
+import user from '../../../scss/media/acc.svg'
+import news from '../../../scss/media/news.svg'
+import question from '../../../scss/media/about-m.svg'
+import money from '../../../scss/media/briefcase.svg'
+import team from '../../../scss/media/seo.svg'
 import car from '../../../scss/media/suprestar.424178cf.svg'
-import logo from '../../../scss/media/suprestar.424178cf.svg'
+import logo from '../../../scss/media/business.svg'
 import superstar from '../../../scss/media/suprestar.424178cf.svg'
-import luckyStar from '../../../scss/media/exchange-svgrepo-com.svg'
-import starsUp from '../../../scss/media/1491254498-promopromotiondiscountdealpercentribbon_82978.svg'
-import bbb from '../../../scss/media/bbb.svg'
+import luckyStar from '../../../scss/media/stonks.svg'
+import starsUp from '../../../scss/media/marketing.svg'
+import bbb from '../../../scss/media/gamepad.svg'
 
 // import megaphone from 'static/icons/megaphone.svg';
-import cap from '../../../scss/media/academic-cap.24d75e30.svg'
-import chat from '../../../scss/media/chat.svg'
+import cap from '../../../scss/media/bot.svg'
+import chat from '../../../scss/media/chat-met.svg'
 // import chat from 'static/icons/chat.svg';
 // import reviews from 'static/icons/reviews.svg';
-import gear from '../../../scss/media/gear.08e3a0ec.svg'
-import leader from '../../../scss/media/leader.42ee91d2.svg'
+import gear from '../../../scss/media/settings-met.svg'
+import leader from '../../../scss/media/mentor-blue.svg'
 
 const navbarLinks = [
   {
@@ -34,6 +34,12 @@ const navbarLinks = [
     route: routes.dashboard,
     isDisabled: false,
     icon: user,
+  },
+  {
+    label: 'Кошелек',
+    route: routes.finances,
+    isDisabled: false,
+    icon: money,
   },
   {
     label: 'Новости',
@@ -63,13 +69,13 @@ const navbarLinks = [
     label: 'Аида',
     route: routes.premiumStars,
     isDisabled: false,
-    icon: car,
+    icon: logo,
   },
   {
     label: 'Андромеда',
     route: routes.superStars,
     isDisabled: false,
-    icon: superstar,
+    icon: logo,
   },
   {
     label: 'Млечный путь',
@@ -81,31 +87,27 @@ const navbarLinks = [
     label: 'exchange',
     route: routes.exchange,
     isDisabled: false,
-    icon: luckyStar,
+    icon: starsUp ,
   },
   {
     label: 'Investbox',
     route: routes.starsUp,
     isDisabled: false,
-    icon: starsUp,
+    icon: luckyStar,
   },
   {
     label: 'Игры',
     route: routes.casino,
     isDisabled: false,
+    classImg: styles.gamepad,
     icon: bbb,
   },
   {
     label: 'О нас',
     route: routes.aboutUs,
     isDisabled: false,
+    classImg: styles.questImg,
     icon: question,
-  },
-  {
-    label: 'Кошелек',
-    route: routes.finances,
-    isDisabled: false,
-    icon: money,
   },
   {
     label: 'Рефераллы',
@@ -151,19 +153,26 @@ const navbarLinks = [
   },
 ]
 
+
+
 function NavBar() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <nav className={styles.NavBar}>
-      {navbarLinks.map(({ label, route, icon, isDisabled }) => (
+    <nav className={isOpen ? [styles.NavBar, styles.navActive].join` ` : styles.NavBar} onClick={e=>setIsOpen(!isOpen)}>
+      <span className={styles.rightArrow}></span>
+      {navbarLinks.map(({ label, route, icon, isDisabled, classImg }) => (
         <NavLink
           key={label}
           to={route}
           className={`${styles.navLink} ${isDisabled ? styles.disabled : ''}`}
           activeClassName={styles.active}
-        >
-          <img className={styles.icon} src={icon} alt="" /> {label}
+          onClick={()=>document.documentElement.scrollTo({top: 0, behavior: 'smooth'})}
+        > 
+          <img className={[styles.icon, classImg].join` `} src={icon} alt="" /> <span className=''>{label}</span>
         </NavLink>
       ))}
+      <span className={isOpen ? [styles.bottonArrow, styles.bottomActive].join` ` : styles.bottonArrow} ></span>
     </nav>
   )
 }

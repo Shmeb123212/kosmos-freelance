@@ -5,7 +5,7 @@ import * as htmlToImage from 'html-to-image'
 import { saveAs } from 'file-saver'
 import { Button } from 'reactstrap'
 import Raven from 'raven-js'
-
+import cl from './StarTrek.module.css';
 import * as actions from '../../../actions/app.actions'
 import avatar from '../../../scss/media/placeholder.7e85be59.svg'
 import inImage from '../../../scss/media/insta.svg'
@@ -61,28 +61,32 @@ function Summary() {
   return (
     userInfo &&
     statistics && (
-      <div className="free-information">
-        <Button
-          disabled={isLoadingPublish}
-          className="free-information__download"
-          onClick={downloadSummary}
-          color="link"
-        >
-          <Icon iconName="download" />
-        </Button>
-        <div className="free-information__render" id="startrek-summary">
-          <figure className="free-information__avatar">
-            <img
-              src={freeInfoAvatar || avatar}
-              alt={`${userInfo.firstName} ${userInfo.lastName}`}
-            />
-          </figure>
-          <div className="free-information__name">
-            <div>{userInfo.firstName}</div>
-            <div>{userInfo.lastName}</div>
-          </div>
-          <ul className="free-information__social">
-            <li>
+      <div className={cl.summaryBlock}>
+        <div className={cl.summaryCard} id="startrek-summary">
+          <div className={cl.summaryLeft}>
+            <figure className={cl.summaryFigure}>
+              <img
+                src={freeInfoAvatar || avatar}
+                alt={`${userInfo.firstName} ${userInfo.lastName}`}
+              />
+            </figure>
+            <Button
+            disabled={isLoadingPublish}
+            className={cl.summaryBtnDownload}
+            onClick={downloadSummary}
+            color="link"
+          >
+            <Icon iconName="download" />
+          </Button>
+            
+          </div> 
+          <div className={cl.summaryRight}>
+          <div className={cl.summaryInitials}>
+              <div>{userInfo.firstName}</div>
+              <div>{userInfo.lastName}</div>
+            </div>
+          <ul className={cl.summaryInfoList}>
+            <li className={cl.summaryInfoItem}>
               {userInfo.myInstagram ? (
                 <a
                   href={`https://www.instagram.com/${userInfo.myInstagram}`}
@@ -97,10 +101,10 @@ function Summary() {
                   {userInfo.myInstagram}
                 </a>
               ) : (
-                '-'
+                'Не указано'
               )}
             </li>
-            <li>
+            <li  className={cl.summaryInfoItem}>
               {userInfo.myTg ? (
                 <a href={`https://t.me/${userInfo.myTg}`} rel="noreferrer" target="_blank">
                   <img
@@ -111,10 +115,10 @@ function Summary() {
                   {userInfo.myTg}
                 </a>
               ) : (
-                '-'
+                'Не указано'
               )}
             </li>
-            <li>
+            <li  className={cl.summaryInfoItem}>
               {userInfo.myVk ? (
                 <a href={`https://vk.com/${userInfo.myVk}`} rel="noreferrer" target="_blank">
                   <img
@@ -125,18 +129,19 @@ function Summary() {
                   {userInfo.myVk}
                 </a>
               ) : (
-                '-'
+                'Не указано'
               )}
             </li>
           </ul>
-          <div className="free-information__total">
-            <div>Общий чек MATRIX Reloaded</div>
+          <div className={cl.summaryCheck}>
+            <h3>Общий чек MATRIX Reloaded:</h3>
             <strong>
               {formatterNumber
                 .format(statistics.totalSum + statistics.myInviterIncome || 0)
                 .replace('₽', 'RUB')}
             </strong>
           </div>
+          </div>         
         </div>
       </div>
     )

@@ -16,10 +16,11 @@
   }
 
   .currentValue {
-    background-color: $indigo;
+    background-color: #cbf3f0 !important;
     position: relative;
     z-index: 2;
     width: 100%;
+    color: #fff;
     display: flex;
     align-items: center;
     padding: 0 60px 0 26px;
@@ -46,11 +47,12 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+   
     border: 1px solid $white;
     border-radius: 0 0 20px 20px;
     overflow: hidden;
     opacity: 0;
-    background-color: $indigo;
+    background-color: #cbf3f0 !important;
 
     &.opened {
       height: initial;
@@ -61,22 +63,18 @@
       max-height: 370px;
       overflow: auto;
 
+      .wrapper::-webkit-scrollbar {
+        width: 5px;
+        opacity: 0;
+        display: none;
+      }
+
       .option {
         padding: 6px 8px 6px 18px;
         border-bottom: 1px solid $white;
         font-size: 1rem;
 
-        &.active {
-          color: $blue;
-        }
-
-        &:hover {
-          color: $blue;
-        }
-
-        &:active {
-          color: $blue;
-        }
+    
 
         &:last-child {
           border: none;

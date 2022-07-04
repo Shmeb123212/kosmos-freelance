@@ -23,10 +23,12 @@ function NewsBlock() {
 
   return (
     <>
-      <Row>
-        <Col md={6}>
+     <h1 className="root-page-title news-title">Новости</h1>
+      <div className='news__card'>
+        <div className='news__block'>
           {lastWeekNews && (
-            <figure className="news__figure">
+            <>
+               <figure className="news__figure">
               <h3 className="news__figure-title">{lastWeekNews.ruTitle}</h3>
               <div
                 className="news__figure-image news__figure-image--pointer"
@@ -38,16 +40,18 @@ function NewsBlock() {
                 />
               </div>
               <figcaption className="news__figure-body">
-                <Button onClick={handleOpenPreview} color="primary" outline block>
-                  Посмотреть
-                </Button>
               </figcaption>
             </figure>
+             <Button onClick={handleOpenPreview} color="primary" className='btn-news' outline block>
+              Посмотреть
+            </Button>
+            </>
           )}
-        </Col>
-        <Col md={6}>
+        </div>
+        <div className='news__block'>
           {lastDayNews && (
-            <figure className="news__figure">
+            <>
+             <figure className="news__figure">
               <h3 className="news__figure-title">{lastDayNews.ruTitle}</h3>
               <div className="news__figure-image">
                 <img
@@ -56,16 +60,18 @@ function NewsBlock() {
                 />
               </div>
               <figcaption className="news__figure-body">
-                {lastDayNews.event && lastDayNews.link && (
-                  <Button tag="a" href={lastDayNews.link} target="_blank" color="primary" block>
+                
+              </figcaption>
+            </figure>
+            {lastDayNews.event && lastDayNews.link && (
+                  <Button tag="a" href={lastDayNews.link}  className='btn-news' target="_blank" color="primary" block>
                     Посетить
                   </Button>
                 )}
-              </figcaption>
-            </figure>
+            </>
           )}
-        </Col>
-      </Row>
+        </div>
+      </div>
       {isOpen && (
         <Lightbox
           mainSrc={imageSrc}

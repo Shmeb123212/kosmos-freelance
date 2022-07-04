@@ -27,22 +27,24 @@ $table-border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #0b2e13;
+      background-color: #fff;
       font-size: 1.125rem;
       border-radius: 50%;
       outline: none;
     }
 
     li {
-      padding: 0 3px;
+      padding: 3px 3px;
+      color: #4cc9f0;
 
       &.active a {
-        background-color: $indigo;
+        background-color: #fff;
+        border: 1px solid #4cc9f0;
       }
 
       &:first-child a,
       &:last-child a {
-        background-color: transparent;
+        background-color: #fff;
       }
     }
   }
@@ -65,7 +67,7 @@ $table-border-radius: 0;
     display: table-cell;
     background-color: $table-header-background-color;
     padding: 10px 0;
-    color: #fff;
+    color: #4cc9f0;
 
     &:first-child {
       border-left: 1px solid $table-header-background-color;
@@ -90,13 +92,13 @@ $table-border-radius: 0;
 
       > .Table_cell {
         background-color: $table-body-background-color;
-        color: #fff;
+        color: #4cc9f0;
         padding: 10px 0;
 
         &:nth-child(odd) {
           display: none;
           background-color: $table-header-background-color;
-          color: #fff;
+          color: #4cc9f0;
           padding-top: 10px;
           padding-bottom: 10px;
         }
@@ -175,7 +177,7 @@ $table-border-radius: 0;
 
         &:nth-child(odd) {
           display: table-cell;
-          background-color: #2a0072;
+          background-color: #fff;
           width: 50%;
         }
       }

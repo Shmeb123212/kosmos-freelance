@@ -40,7 +40,7 @@ export default function BuyStatusModal({ status, onClose }) {
         <Row>
           <Col xs={12} className="d-xl-flex justify-content-between">
             {/* eslint-disable-next-line react/prop-types */}
-            {status.message}
+            У пользователя недостаточно средств
           </Col>
         </Row>
       </Container>

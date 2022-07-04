@@ -310,7 +310,12 @@ export default function Table({ location: { state = {}, pathname } }) {
   const backRouteElement = useMemo(() => {
     let returnRoute = (
       <Link to={routes.premiumStars} className={styles.close}>
-        <img src={closeIcon} alt="Close" />
+         <span className={styles.closeIT}>
+
+</span>
+<span className={styles.closeIB}>
+
+</span>
       </Link>
     )
     if (!isEmpty(state) && state.useBack) {
@@ -326,10 +331,10 @@ export default function Table({ location: { state = {}, pathname } }) {
   return (
     <div className={styles.Table}>
       <Container>
-        <div className={styles.header}>{backRouteElement}</div>
+        <div className={styles.header}> {matrixInfo && <h1 className={styles.title}>MATRIX2 - M{matrixInfo.id}</h1>} {backRouteElement}</div>
         <div className={styles.container}>
           <div className={styles.sidebar}>
-            {matrixInfo && <h1 className={styles.title}>MATRIX2 - M{matrixInfo.id}</h1>}
+           
             {selectItems && (
               <Select
                 values={selectItems}
@@ -346,7 +351,7 @@ export default function Table({ location: { state = {}, pathname } }) {
               <Button
                 onClick={handleUpMatrix}
                 disabled={buyingStatus.type === 'pending'}
-                className="w-100"
+                className="w-1001"
                 color="perrywinkle"
                 size="small"
               >
@@ -359,7 +364,7 @@ export default function Table({ location: { state = {}, pathname } }) {
                 <Button
                   onClick={showBuyMatrixModal}
                   disabled={buyingStatus.type === 'pending'}
-                  className="w-100"
+                  className="w-1001"
                   color="perrywinkle"
                   size="small"
                 >
@@ -461,7 +466,7 @@ export default function Table({ location: { state = {}, pathname } }) {
                 <Button
                   onClick={showBuyMatrixModal}
                   disabled={buyingStatus.type === 'pending'}
-                  className="w-100"
+                  className="w-1001"
                   color="perrywinkle"
                   size="small"
                 >

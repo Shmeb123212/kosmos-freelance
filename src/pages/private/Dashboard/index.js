@@ -94,26 +94,26 @@ function Dashboard() {
                   </div>
                 </div>
               </div>
-              <div className="card">
+              <div className="card__bot">
                 <div className="card__header">
                   <div className="card__header-left">
-                    <h3 className="card__title">Реферальная ссылка</h3>
+                    <h3 className="card__title card__title-info">Реферальная ссылка</h3>
                   </div>
                 </div>
                 <div className="card__body">
                   <div className="referral-link">
-                    <div className="referral-link__url">{userInfo.refLink}</div>
+                    <div className="referral-link__url">- {userInfo.refLink} -</div>
                     <Button
                       color="link"
                       className="referral-link__btn"
                       onClick={copyRefLinkToClipboard}
                     >
-                      <Icon iconName="copy" />
+                     <span></span>
                     </Button>
                   </div>
                 </div>
               </div>
-              <div className="startrek__title1">
+              <div className="startrek__title1 card__title-info">
                 <span>До запуска осталось</span>
               </div>
               <div className="startrek__title">

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
 import { Row, Col, Container } from 'reactstrap'
 import { useSelector, useDispatch } from 'react-redux'
+import cl from './StarTrek.module.css';
 
 import * as actions from '../../../actions/startrek.actions'
 import NavBar from '../../../components/layout/Navbar'

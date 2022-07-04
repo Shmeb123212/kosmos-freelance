@@ -324,7 +324,12 @@ export default function Tablem({ location: { state = {}, pathname } }) {
   const backRouteElement = useMemo(() => {
     let returnRoute = (
       <Link to={routes.matrixs} className={styles.close}>
-        <img src={closeIcon} alt="Close" />
+        <span className={styles.closeIT}>
+
+        </span>
+        <span className={styles.closeIB}>
+
+        </span>
       </Link>
     )
     if (!isEmpty(state) && state.useBack) {
@@ -402,11 +407,12 @@ export default function Tablem({ location: { state = {}, pathname } }) {
                   <Button
                     onClick={showBuyMatrixModal}
                     disabled={buyingStatus.type === 'pending'}
-                    className="w-100"
+                    className="w-1001"
                     color="perrywinkle"
                     size="small"
                   >
                     Купить
+                    
                   </Button>
                 )}
                 <Row>
@@ -414,11 +420,12 @@ export default function Tablem({ location: { state = {}, pathname } }) {
                     {matrixInfo.isActive && (
                       <Button
                         onClick={showClonesModal}
-                        className="w-100"
+                        className="w-1001"
                         color="violet-blue"
                         size="small"
                       >
                         Мои клоны
+                     
                       </Button>
                     )}
                   </Col>

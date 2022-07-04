@@ -215,7 +215,12 @@ function SuperStarTable({ location: { state = {}, pathname } }) {
   const backRouteElement = useMemo(() => {
     let returnRoute = (
       <Link to={routes.superStars} className={styles.close}>
-        <img src={closeIcon} alt="Close" />
+         <span className={styles.closeIT}>
+
+        </span>
+        <span className={styles.closeIB}>
+
+        </span>
       </Link>
     )
     if (!isEmpty(state) && state.useBack) {
@@ -231,15 +236,15 @@ function SuperStarTable({ location: { state = {}, pathname } }) {
   return (
     <div className={styles.Table}>
       <Container>
-        <div className={styles.header}>{backRouteElement}</div>
+        <div className={styles.header}>{matrixInfo && <h1 className={styles.title}>MATRIX3 LVL {matrixInfo.level}</h1>} {backRouteElement}</div>
         <div className={styles.container}>
           <div className={styles.sidebar}>
-            {matrixInfo && <h1 className={styles.title}>MATRIX3 LVL {matrixInfo.level}</h1>}
+            
             {matrixInfo && matrixInfo.id && matrixInfo.isActive && matrixInfo.level <= 3 && (
               <div className="d-none d-xl-block">
                 <Button
                   onClick={handleToggleQueueModal}
-                  className="w-100"
+                  className="w-1001"
                   color="perrywinkle"
                   size="small"
                 >
@@ -253,7 +258,7 @@ function SuperStarTable({ location: { state = {}, pathname } }) {
                 <Button
                   onClick={showBuyMatrixModal}
                   disabled={buyingStatus.type === 'pending'}
-                  className="w-100"
+                  className="w-1001"
                   color="perrywinkle"
                   pending
                   size="small"
@@ -268,7 +273,7 @@ function SuperStarTable({ location: { state = {}, pathname } }) {
                 <Button
                   onClick={showCometsBuyModal}
                   disabled={buyingStatus.type === 'pending'}
-                  className="w-100"
+                  className="w-1001"
                   color="perrywinkle"
                   pending
                   size="small"
@@ -326,7 +331,7 @@ function SuperStarTable({ location: { state = {}, pathname } }) {
                   <Button
                     onClick={showBuyMatrixModal}
                     disabled={buyingStatus.type === 'pending'}
-                    className="w-100"
+                    className="w-1001"
                     color="perrywinkle"
                     size="small"
                   >
@@ -336,7 +341,7 @@ function SuperStarTable({ location: { state = {}, pathname } }) {
                 {matrixInfo && matrixInfo.id && matrixInfo.isActive && matrixInfo.level <= 3 && (
                   <Button
                     onClick={handleToggleQueueModal}
-                    className="w-100"
+                    className="w-1001"
                     color="violet-blue"
                     size="small"
                   >
@@ -347,7 +352,7 @@ function SuperStarTable({ location: { state = {}, pathname } }) {
                   <Button
                     onClick={showCometsBuyModal}
                     disabled={buyingStatus.type === 'pending'}
-                    className="w-100"
+                    className="w-1001"
                     color="perrywinkle"
                     pending
                     size="small"
